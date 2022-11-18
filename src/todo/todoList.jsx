@@ -1,7 +1,7 @@
 import { useState } from "react";
 import * as T from "./todostyled";
 const TodoList = () => {
-  const [text, setText] = useState();
+  const [text, setText] = useState("");
   const [textList, setTextList] = useState([
     {
       id: "",
@@ -20,22 +20,37 @@ const TodoList = () => {
   };
   return (
     <T.Main>
-      <T.Header>
+      <T.TodoBox>
         <T.Navnar>
-          <T.Logo>todoList</T.Logo>
+          <T.Logo>TodoList</T.Logo>
           <T.Menu>Home</T.Menu>
           <T.Buttons>
             <T.Button type="button" value="Login"></T.Button>
           </T.Buttons>
         </T.Navnar>
-      </T.Header>
-      <input placeholder="할일적기" onChange={onHandleChange} />
-      <button onClick={onTextPush}>입력</button>
-      <div>
-        {textList.map((textList, id) => {
-          return <li key={id}>{textList.todo}</li>;
-        })}
-      </div>
+        <T.TextWrap>
+          <T.WrapInput>
+            <T.TextInput
+              value={text}
+              placeholder="할일"
+              onChange={onHandleChange}
+            />
+            <T.TextButton onClick={onTextPush}>입력</T.TextButton>
+          </T.WrapInput>
+          <div>
+            {textList.map((textList, id) => {
+              return (
+                <T.TodoList>
+                  <T.TodoText key={id}>{textList.todo}</T.TodoText>
+                  <button>수정</button>
+                  <button>삭제</button>
+                  <button>❤️</button>
+                </T.TodoList>
+              );
+            })}
+          </div>
+        </T.TextWrap>
+      </T.TodoBox>
     </T.Main>
   );
 };

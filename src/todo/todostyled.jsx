@@ -1,12 +1,19 @@
 import styled from "@emotion/styled";
 
-const Main = styled.main``;
-const Header = styled.header`
+const Main = styled.main`
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  display: block;
+  align-items: center;
+`;
+const TodoBox = styled.header`
   height: 85vh;
-  width: 90%;
+  width: 60%;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   margin: auto;
+  margin-top: 60px;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
   border-radius: 25px;
   border-top: 1px solid rgba(255, 255, 255, 0.5);
@@ -17,12 +24,13 @@ const Navnar = styled.nav`
   width: 100%;
   padding: 35px 50px;
   display: flex;
-  /* justify-content: space-between; */
+
   font-size: 22px;
 `;
 const Menu = styled.ul`
   font-size: 17px;
   font-weight: 500;
+  margin-top: 35px;
   transition: all 0.3s ease;
   &:hover {
     color: #f2f2f2;
@@ -35,7 +43,7 @@ const Button = styled.input`
   font-size: 17px;
   font-weight: 500;
   padding: 6px 12px;
-  margin: 0 8px;
+  margin: 29px 0px 0px 367px;
   border-radius: 12px;
   border: none;
   cursor: pointer;
@@ -45,4 +53,55 @@ const Button = styled.input`
   }
   background: linear-gradient(135deg, #ff9a9e 10%, #f6416c 100%);
 `;
-export { Main, Logo, Navnar, Menu, Buttons, Button, Header };
+
+const TextWrap = styled.div`
+  margin: -11px 0px 0px 43px;
+`;
+const WrapInput = styled.div``;
+const TextInput = styled.input`
+  width: 200px;
+  height: 30px;
+  outline: none;
+  box-shadow: none;
+  border-radius: 3px;
+  background: #ff9a9e;
+  border: 1px solid #fcc8ca;
+`;
+const TextButton = styled.button`
+  width: 50px;
+  height: 35px;
+  margin: 10px;
+  border-radius: 3px;
+  background: linear-gradient(135deg, #ff9a9e 10%, #f6416c 100%);
+
+  box-shadow: none;
+  border: 1px solid #fcc8ca;
+  color: #f2f2f2;
+`;
+const TodoList = styled.div`
+  /* border: 1px solid black; */
+  border-radius: 10px;
+  background: #ff9a9e;
+  /* box-shadow: 3px 3px red, -1em 0 0.4em olive; */
+  width: 40%;
+  height: auto;
+  word-break: break-all;
+`;
+const TodoText = styled.p`
+  font-size: 20px;
+`;
+export {
+  Main,
+  Logo,
+  Navnar,
+  Menu,
+  Buttons,
+  Button,
+  TodoBox,
+  TextWrap,
+  TodoList,
+  TodoText,
+  TextInput,
+  WrapInput,
+  TextButton,
+};
