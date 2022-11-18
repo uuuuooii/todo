@@ -20,7 +20,15 @@ const TodoList = () => {
   };
   return (
     <T.Main>
-      <div>todoList</div>
+      <T.Header>
+        <T.Navnar>
+          <T.Logo>todoList</T.Logo>
+          <T.Menu>Home</T.Menu>
+          <T.Buttons>
+            <T.Button type="button" value="Login"></T.Button>
+          </T.Buttons>
+        </T.Navnar>
+      </T.Header>
       <input placeholder="할일적기" onChange={onHandleChange} />
       <button onClick={onTextPush}>입력</button>
       <div>

@@ -1,11 +1,26 @@
 body {
-  margin: 0;
   height: 100vh;
   width: 100%;
+  display: flex;
+  display: block;
+  align-items: center;
   background: linear-gradient(135deg, #ff9a9e 10%, #f6416c 100%);
 }
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+body::before,
+body::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.4;
+}
+body::before {
+  clip-path: circle(30% at left 20%);
+  background: linear-gradient(135deg, #f6416c 10%, #ff9a9e 100%);
+}
+body::after {
+  clip-path: circle(25% at right 80%);
+  background: linear-gradient(135deg, #f6416c 10%, #ff9a9e 100%);
 }
