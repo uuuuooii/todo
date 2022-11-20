@@ -3,6 +3,8 @@ import * as T from "./todostyled";
 const TodoList = () => {
   const [text, setText] = useState("");
   const [textList, setTextList] = useState([]);
+  const [edit, setEdit] = useState(false);
+  const [newTodo, setNewTodo] = useState();
 
   console.log(textList);
   const onHandleChange = (e) => {
@@ -19,6 +21,10 @@ const TodoList = () => {
 
   const onHandleRemove = (id) => {
     setTextList(textList.filter((textList) => textList.id !== id));
+  };
+
+  const onHandleEdit = () => {
+    setEdit(true);
   };
   return (
     <T.Main>
@@ -44,7 +50,15 @@ const TodoList = () => {
               return (
                 <T.TodoList>
                   <T.TodoText key={id}>{textList.todo}</T.TodoText>
-                  <button>수정</button>
+                  {edit ? (
+                    <>
+                      <input></input>
+                      <button onClick={onHandleAdd}>완료</button>
+                      <button>취소</button>
+                    </>
+                  ) : (
+                    <button onClick={onHandleEdit}>수정</button>
+                  )}
                   <button onClick={() => onHandleRemove(textList.id)}>
                     삭제
                   </button>
