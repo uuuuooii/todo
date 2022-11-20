@@ -2,21 +2,23 @@ import { useState } from "react";
 import * as T from "./todostyled";
 const TodoList = () => {
   const [text, setText] = useState("");
-  const [textList, setTextList] = useState([
-    {
-      id: "",
-      todo: "",
-    },
-  ]);
+  const [textList, setTextList] = useState([]);
+
+  console.log(textList);
   const onHandleChange = (e) => {
     setText(e.target.value);
-    console.log(e.target.value);
+    // console.log(e.target.value);
   };
-  const onTextPush = () => {
+  const onHandleAdd = () => {
     setTextList((prev) => {
-      return [...prev, { todo: text }];
+      return [...prev, { todo: text, id: textList.length, checked: false }];
     });
+
     setText("");
+  };
+
+  const onHandleRemove = (id) => {
+    setTextList(textList.filter((textList) => textList.id !== id));
   };
   return (
     <T.Main>
@@ -35,7 +37,7 @@ const TodoList = () => {
               placeholder="할일"
               onChange={onHandleChange}
             />
-            <T.TextButton onClick={onTextPush}>입력</T.TextButton>
+            <T.TextButton onClick={onHandleAdd}>입력</T.TextButton>
           </T.WrapInput>
           <div>
             {textList.map((textList, id) => {
@@ -43,7 +45,9 @@ const TodoList = () => {
                 <T.TodoList>
                   <T.TodoText key={id}>{textList.todo}</T.TodoText>
                   <button>수정</button>
-                  <button>삭제</button>
+                  <button onClick={() => onHandleRemove(textList.id)}>
+                    삭제
+                  </button>
                   <button>❤️</button>
                 </T.TodoList>
               );
