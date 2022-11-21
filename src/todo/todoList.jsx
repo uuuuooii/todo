@@ -1,14 +1,18 @@
 import { useState } from "react";
 import * as T from "./todostyled";
 const TodoList = () => {
-  const [text, setText] = useState("");
+  const [text, setText] = useState();
   const [textList, setTextList] = useState([]);
   const [edit, setEdit] = useState(false);
-  const [newTodo, setNewTodo] = useState();
+  const [newText, setNewText] = useState();
 
   console.log(textList);
   const onHandleChange = (e) => {
     setText(e.target.value);
+    // console.log(e.target.value);
+  };
+  const onHandleEdit = (e) => {
+    setNewText(e.target.value);
     // console.log(e.target.value);
   };
   const onHandleAdd = () => {
@@ -23,9 +27,16 @@ const TodoList = () => {
     setTextList(textList.filter((textList) => textList.id !== id));
   };
 
-  const onHandleEdit = () => {
+  const onUpdateEdit = (id) => {
     setEdit(true);
+    setTextList(
+      textList.map((textList) =>
+        textList.id === id ? { ...textList, todo: newText } : textList
+      )
+    );
+    // setEdit(false);
   };
+  console.log(text);
   return (
     <T.Main>
       <T.TodoBox>
@@ -52,12 +63,13 @@ const TodoList = () => {
                   <T.TodoText key={id}>{textList.todo}</T.TodoText>
                   {edit ? (
                     <>
-                      <input></input>
-                      <button onClick={onHandleAdd}>완료</button>
-                      <button>취소</button>
+                      <input onChange={onHandleEdit}></input>
+                      <button onClick={() => onUpdateEdit(textList.id)}>
+                        수정하기
+                      </button>
                     </>
                   ) : (
-                    <button onClick={onHandleEdit}>수정</button>
+                    <button onClick={onUpdateEdit}>수정</button>
                   )}
                   <button onClick={() => onHandleRemove(textList.id)}>
                     삭제
