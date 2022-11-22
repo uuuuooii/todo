@@ -5,6 +5,7 @@ const TodoList = () => {
   const [textList, setTextList] = useState([]);
   const [edit, setEdit] = useState(false);
   const [newText, setNewText] = useState();
+  const [like, setlike] = useState(0);
 
   console.log(textList);
   const onHandleChange = (e) => {
@@ -28,15 +29,13 @@ const TodoList = () => {
   };
 
   const onUpdateEdit = (id) => {
-    setEdit(true);
     setTextList(
       textList.map((textList) =>
         textList.id === id ? { ...textList, todo: newText } : textList
       )
     );
-    // setEdit(false);
   };
-  console.log(text);
+
   return (
     <T.Main>
       <T.TodoBox>
@@ -69,12 +68,12 @@ const TodoList = () => {
                       </button>
                     </>
                   ) : (
-                    <button onClick={onUpdateEdit}>수정</button>
+                    <button onClick={() => setEdit(true)}>수정</button>
                   )}
                   <button onClick={() => onHandleRemove(textList.id)}>
                     삭제
                   </button>
-                  <button>❤️</button>
+                  <button onClick={() => setlike(like + 1)}>❤️{like}</button>
                 </T.TodoList>
               );
             })}
