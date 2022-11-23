@@ -34,6 +34,7 @@ const TodoList = () => {
         textList.id === id ? { ...textList, todo: newText } : textList
       )
     );
+    setEdit(false);
   };
 
   return (
@@ -68,7 +69,9 @@ const TodoList = () => {
                       </button>
                     </>
                   ) : (
-                    <button onClick={() => setEdit(true)}>수정</button>
+                    <button value={newText} onClick={() => setEdit(true)}>
+                      수정
+                    </button>
                   )}
                   <button onClick={() => onHandleRemove(textList.id)}>
                     삭제
