@@ -88,7 +88,11 @@ const TodoList = () => {
             {textList.map((textList, id) => {
               return (
                 <T.TodoList>
-                  <T.TodoText key={id}>{textList.todo}</T.TodoText>
+                  <T.TodoText key={id}>
+                    <input type="checkbox" value="blue" />
+                    {textList.todo}
+                  </T.TodoText>
+
                   {textList.edit ? (
                     <>
                       <input onChange={onHandleEdit}></input>
