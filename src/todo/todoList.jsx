@@ -114,6 +114,7 @@ const TodoList = () => {
                   <button onClick={() => onChangeLike(textList.id)}>
                     ❤️{textList.like}
                   </button>
+                  <button>댓글</button>
                 </T.TodoList>
               );
             })}
