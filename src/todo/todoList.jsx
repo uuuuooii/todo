@@ -64,6 +64,7 @@ const TodoList = () => {
         <T.Navnar>
           <T.Logo>TodoList</T.Logo>
           <T.Menu>Home</T.Menu>
+          <T.Menu>Home</T.Menu>
           <T.Buttons>
             <T.Button type="button" value="Login"></T.Button>
           </T.Buttons>
@@ -72,10 +73,16 @@ const TodoList = () => {
           <T.WrapInput>
             <T.TextInput
               value={text}
-              placeholder="할일"
+              placeholder="입력해주세요"
               onChange={onHandleChange}
             />
-            <T.TextButton onClick={onHandleAdd}>입력</T.TextButton>
+            <T.TextButton
+              onClick={() =>
+                text === "" ? alert("입력해주세요") : onHandleAdd()
+              }
+            >
+              입력
+            </T.TextButton>
           </T.WrapInput>
           <div>
             {textList.map((textList, id) => {
