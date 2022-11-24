@@ -3,22 +3,28 @@ import * as T from "./todostyled";
 const TodoList = () => {
   const [text, setText] = useState();
   const [textList, setTextList] = useState([]);
-  const [edit, setEdit] = useState(false);
   const [newText, setNewText] = useState();
-  const [like, setlike] = useState(0);
 
+  //다음에는 state배열에 담아서 state하나로 만들기
   console.log(textList);
   const onHandleChange = (e) => {
     setText(e.target.value);
-    // console.log(e.target.value);
   };
   const onHandleEdit = (e) => {
     setNewText(e.target.value);
-    // console.log(e.target.value);
   };
   const onHandleAdd = () => {
     setTextList((prev) => {
-      return [...prev, { todo: text, id: textList.length, checked: false }];
+      return [
+        ...prev,
+        {
+          todo: text,
+          id: textList.length + 1,
+          checked: false,
+          edit: false,
+          like: 0,
+        },
+      ];
     });
 
     setText("");
@@ -34,9 +40,24 @@ const TodoList = () => {
         textList.id === id ? { ...textList, todo: newText } : textList
       )
     );
-    setEdit(false);
   };
 
+  const onChangeEdit = (id) => {
+    setTextList(
+      textList.map((textList) =>
+        textList.id === id
+          ? { ...textList, edit: true }
+          : { ...textList, edit: false }
+      )
+    );
+  };
+  const onChangeLike = (id) => {
+    setTextList(
+      textList.map((textList) =>
+        textList.id === id ? { ...textList, like: +1 } : textList
+      )
+    );
+  };
   return (
     <T.Main>
       <T.TodoBox>
@@ -61,7 +82,7 @@ const TodoList = () => {
               return (
                 <T.TodoList>
                   <T.TodoText key={id}>{textList.todo}</T.TodoText>
-                  {edit ? (
+                  {textList.edit ? (
                     <>
                       <input onChange={onHandleEdit}></input>
                       <button onClick={() => onUpdateEdit(textList.id)}>
@@ -69,14 +90,19 @@ const TodoList = () => {
                       </button>
                     </>
                   ) : (
-                    <button value={newText} onClick={() => setEdit(true)}>
+                    <button
+                      value={newText}
+                      onClick={() => onChangeEdit(textList.id)}
+                    >
                       수정
                     </button>
                   )}
                   <button onClick={() => onHandleRemove(textList.id)}>
                     삭제
                   </button>
-                  <button onClick={() => setlike(like + 1)}>❤️{like}</button>
+                  <button onClick={() => onChangeLike(textList.id)}>
+                    ❤️{textList.like}
+                  </button>
                 </T.TodoList>
               );
             })}
