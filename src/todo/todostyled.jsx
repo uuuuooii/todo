@@ -27,7 +27,7 @@ const Navnar = styled.nav`
 
   font-size: 22px;
 `;
-const Menu = styled.ul`
+const Menu = styled.button`
   font-size: 17px;
   font-weight: 500;
   margin-top: 35px;

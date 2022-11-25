@@ -1,18 +1,21 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import * as T from "./todostyled";
 const TodoList = () => {
   const [text, setText] = useState();
   const [textList, setTextList] = useState([]);
   const [newText, setNewText] = useState();
 
+  //file
+  const [image, setImage] = useState();
+  const failUpload = useRef();
+
   //다음에는 state배열에 담아서 state하나로 만들기
   console.log(textList);
   const onHandleChange = (e) => {
     setText(e.target.value);
   };
-  const onHandleEdit = (e) => {
-    setNewText(e.target.value);
-  };
+
+  //추가
   const onHandleAdd = () => {
     setTextList((prev) => {
       return [
@@ -29,11 +32,14 @@ const TodoList = () => {
 
     setText("");
   };
-
+  //삭제
   const onHandleRemove = (id) => {
     setTextList(textList.filter((textList) => textList.id !== id));
   };
-
+  //수정
+  const onHandleEdit = (e) => {
+    setNewText(e.target.value);
+  };
   const onUpdateEdit = (id) => {
     setTextList(
       textList.map((textList) =>
@@ -51,6 +57,7 @@ const TodoList = () => {
       )
     );
   };
+  //like
   const onChangeLike = (id) => {
     setTextList(
       textList.map((textList) =>
@@ -58,13 +65,39 @@ const TodoList = () => {
       )
     );
   };
+
+  //file
+  const onHandleMail = () => {
+    failUpload.current.click();
+  };
+
+  const onHandleFail = (e) => {
+    // console.log(e.target.files[0]);
+    const imgReader = new FileReader();
+    imgReader.readAsDataURL(e);
+    return new Promise((resolve) => {
+      imgReader.onload = () => {
+        setImage(imgReader.result);
+        resolve();
+      };
+    });
+  };
+
   return (
     <T.Main>
       <T.TodoBox>
         <T.Navnar>
           <T.Logo>TodoList</T.Logo>
           <T.Menu>Home</T.Menu>
-          <T.Menu>Home</T.Menu>
+          <T.Menu onClick={onHandleMail}>Mail</T.Menu>
+          <input
+            ref={failUpload}
+            type="file"
+            id="fileUpload"
+            onChange={(e) => onHandleFail(e.target.files[0])}
+            style={{ display: "none" }}
+          />
+          <div>{image && <img src={image} alt="preview-img" />}</div>
           <T.Buttons>
             <T.Button type="button" value="Login"></T.Button>
           </T.Buttons>
@@ -114,7 +147,7 @@ const TodoList = () => {
                   <button onClick={() => onChangeLike(textList.id)}>
                     ❤️{textList.like}
                   </button>
-                  <button>댓글</button>
+                  {/* <button>댓글</button> */}
                 </T.TodoList>
               );
             })}
