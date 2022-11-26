@@ -10,6 +10,8 @@ const TodoList = () => {
   const failUpload = useRef();
 
   //다음에는 state배열에 담아서 state하나로 만들기
+  //주석으로 커밋이 될까
+
   console.log(textList);
   const onHandleChange = (e) => {
     setText(e.target.value);
