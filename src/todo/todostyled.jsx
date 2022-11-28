@@ -27,10 +27,10 @@ const Navnar = styled.nav`
 
   font-size: 22px;
 `;
-const Menu = styled.button`
+const Menu = styled.a`
   font-size: 17px;
   font-weight: 500;
-  margin-top: 35px;
+  margin: 35px 0px 0px 45px;
   transition: all 0.3s ease;
   &:hover {
     color: #f2f2f2;
@@ -43,7 +43,7 @@ const Button = styled.input`
   font-size: 17px;
   font-weight: 500;
   padding: 6px 12px;
-  margin: 29px 0px 0px 367px;
+  margin: 29px 0px 0px 50px;
   border-radius: 12px;
   border: none;
   cursor: pointer;
@@ -79,16 +79,22 @@ const TextButton = styled.button`
   color: #f2f2f2;
 `;
 const TodoList = styled.div`
-  /* border: 1px solid black; */
   border-radius: 10px;
+
   background: #ff9a9e;
+  background-color: rgba(242, 94, 94, 0.3);
   /* box-shadow: 3px 3px red, -1em 0 0.4em olive; */
   width: 40%;
-  height: auto;
+  height: 150px;
   word-break: break-all;
 `;
 const TodoText = styled.p`
   font-size: 20px;
+`;
+
+const ImageBox = styled.img`
+  width: 300px;
+  height: 300px;
 `;
 export {
   Main,
@@ -104,4 +110,5 @@ export {
   TextInput,
   WrapInput,
   TextButton,
+  ImageBox,
 };
