@@ -70,6 +70,7 @@ const TodoList = () => {
           <T.Logo>TodoList</T.Logo>
           <T.Menu>Home</T.Menu>
           <T.Menu onClick={() => navigate("./mail")}>Mail</T.Menu>
+          <T.Menu onClick={() => navigate("./game")}>Game</T.Menu>
 
           <T.Buttons>
             <T.Button type="button" value="Login"></T.Button>

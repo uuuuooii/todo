@@ -28,7 +28,7 @@ const Mail = () => {
           <T.Logo>TodoList</T.Logo>
           <T.Menu onClick={() => navigate("/")}>Home</T.Menu>
           <T.Menu>Mail</T.Menu>
-
+          <T.Menu onClick={() => navigate("/game")}>Game</T.Menu>
           <T.Buttons>
             <T.Button type="button" value="Login"></T.Button>
           </T.Buttons>
