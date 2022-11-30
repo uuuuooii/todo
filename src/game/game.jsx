@@ -1,6 +1,8 @@
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as T from "../todo/todostyled";
+import Tetris from "./tetris";
+
 const Game = () => {
   const navigate = useNavigate();
 
@@ -16,7 +18,9 @@ const Game = () => {
             <T.Button type="button" value="Login"></T.Button>
           </T.Buttons>
         </T.Navnar>
-        <T.TextWrap></T.TextWrap>
+        <T.TextWrap>
+          <Tetris />
+        </T.TextWrap>
       </T.TodoBox>
     </T.Main>
   );
