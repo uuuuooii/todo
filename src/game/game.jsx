@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import * as T from "../todo/todostyled";
+import * as T from "../todo/styles/todoStyled";
+import * as G from "./styles/gameStyled";
 import Tetris from "./tetris";
 
 const Game = () => {
@@ -19,7 +20,9 @@ const Game = () => {
           </T.Buttons>
         </T.Navnar>
         <T.TextWrap>
-          <Tetris />
+          <G.GameWrap>
+            <Tetris />
+          </G.GameWrap>
         </T.TextWrap>
       </T.TodoBox>
     </T.Main>

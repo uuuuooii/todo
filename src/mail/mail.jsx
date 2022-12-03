@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import * as T from "../todo/todostyled";
+import * as T from "../todo/styles/todoStyled";
 const Mail = () => {
   const navigate = useNavigate();
 

@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import * as T from "./todostyled";
+import * as T from "./styles/todoStyled";
 const TodoList = () => {
   const [text, setText] = useState();
   const [textList, setTextList] = useState([]);
