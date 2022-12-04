@@ -1,5 +1,6 @@
 import React from "react";
 import Cell from "./cell";
+import * as S from "./styles/stageStyled";
 
 const Stage = ({ stage }) => (
   <div width={stage[0].length} height={stage.length}>
