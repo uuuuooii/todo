@@ -1,7 +1,8 @@
 import React from "react";
+import * as S from "./styles/startButton";
 
 const StartButton = ({ callback }) => {
-  return <div>Startbutton</div>;
+  return <S.StartButton onClick={callback}>Startbutton</S.StartButton>;
 };
 
 export default StartButton;
