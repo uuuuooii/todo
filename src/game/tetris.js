@@ -1,14 +1,23 @@
-import React from "react";
-import { createStage } from "../gameHelpers";
+import { useState } from "react";
+//components
 import Display from "./display";
 import Stage from "./stage";
 import StartButton from "./startButton";
+
+//custom hook
+import { usePlayer } from "../hooks/usePlayer";
+import { useStage } from "../hooks/useStage";
+
+//styled
 import * as T from "./styles/tetrisStyled";
 const Tetris = () => {
+  const [player] = usePlayer();
+  const [stage, setStage] = useStage(player);
+  console.log("re-render");
   return (
     <T.TetrisWrapper>
       <T.Tetris>
-        <Stage stage={createStage()} />
+        <Stage stage={stage} />
         <aside>
           <div>
             <Display text="Score" />
