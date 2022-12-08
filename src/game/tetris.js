@@ -10,6 +10,7 @@ import { useStage } from "../hooks/useStage";
 
 //styled
 import * as T from "./styles/tetrisStyled";
+import { createStage } from "../gameHelpers";
 const Tetris = () => {
   const [player] = usePlayer();
   const [stage, setStage] = useStage(player);
@@ -17,7 +18,7 @@ const Tetris = () => {
   return (
     <T.TetrisWrapper>
       <T.Tetris>
-        <Stage stage={stage} />
+        <Stage stage={createStage()} />
         <aside>
           <div>
             <Display text="Score" />
