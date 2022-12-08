@@ -12,19 +12,26 @@ import { useStage } from "../hooks/useStage";
 import * as T from "./styles/tetrisStyled";
 import { createStage } from "../gameHelpers";
 const Tetris = () => {
+  const [dropTime, setDropTime] = useState(null);
+  const [gameOver, setGameOver] = useStage(false);
+
   const [player] = usePlayer();
   const [stage, setStage] = useStage(player);
   console.log("re-render");
   return (
     <T.TetrisWrapper>
       <T.Tetris>
-        <Stage stage={createStage()} />
+        <Stage stage={stage} />
         <aside>
-          <div>
-            <Display text="Score" />
-            <Display text="Rows" />
-            <Display text="Level" />
-          </div>
+          {gameOver ? (
+            <Display gameOver={gameOver} text="Game Over"></Display>
+          ) : (
+            <div>
+              <Display text="Score" />
+              <Display text="Rows" />
+              <Display text="Level" />
+            </div>
+          )}
           <StartButton />
         </aside>
       </T.Tetris>
