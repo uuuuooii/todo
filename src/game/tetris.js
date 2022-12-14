@@ -19,8 +19,22 @@ const Tetris = () => {
   const [player] = usePlayer();
   const [stage, setStage] = useStage(player);
   console.log("re-render");
+
+  const movePlayer = (din) => {};
+
+  const startGame = () => {};
+
+  const drop = () => {};
+
+  const dropPlayer = () => {};
+
+  const move = ({ keyCode }) => {
+    if (!gameOver) {
+    }
+  };
+  //test
   return (
-    <T.TetrisWrapper>
+    <T.TetrisWrapper role="button" tabIndex="0" onKeyDown={(e) => move(e)}>
       <T.Tetris>
         <Stage stage={stage} />
         <aside>
